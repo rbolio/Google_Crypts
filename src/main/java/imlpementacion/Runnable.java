@@ -1,6 +1,7 @@
 package imlpementacion;
 
 import cryptoSources.DTO;
+import pojos.BitsoBean;
 
 public class Runnable {
 
@@ -10,9 +11,9 @@ public class Runnable {
 	
 		
 		try {
-			dto.bitsoBooks();
+			BitsoBean bitso =dto.bitsoBooks();
+			System.out.println(bitso);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
