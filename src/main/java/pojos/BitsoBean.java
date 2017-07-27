@@ -64,7 +64,7 @@ public class BitsoBean {
 	}
 	@Override
 	public String toString() {
-		return "BitsoBean [last=" + last + ", high=" + high + ", low=" + low + ", vwap=" + vwap + ", volume=" + volume
+		return "BitsoBean (USD) [last=" + last + ", high=" + high + ", low=" + low + ", vwap=" + vwap + ", volume=" + volume
 				+ ", bid=" + bid + ", ask=" + ask + ", createdAt=" + createdAt + "]";
 	}
 	public BitsoBean(BigDecimal last, BigDecimal high, BigDecimal low, BigDecimal vwap, BigDecimal volume,
