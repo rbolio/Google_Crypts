@@ -2,6 +2,8 @@ package cryptoSources;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -51,18 +53,30 @@ public class DTO{
 		return bitsoBean;
 	}
 	
-	public boolean getEthTrend() throws IOException, JSONException{
+	public Map<Date,Integer> getEthTrend() throws IOException, JSONException{
 		Utilities utilities = new Utilities();
-		Boolean status = false;
+		
 		String ethQry = "https://trends.google.com/trends/fetchComponent?cid=TIMESERIES_GRAPH_0&export=3&q=ETHEREUM";
 		
 		//gets eth trend from internet
-		JSONObject ethTrend = utilities.readJsonFromUrl(ethQry);
+		Map<Date,Integer> ethTrend = utilities.getGoogleTrend(ethQry);
 		
-		//converts to CSV to keep from querrying too often.
-		return utilities.json2csv(ethTrend);
+		if (ethTrend.size() > 0)
+			return ethTrend;
+		return null;
 	}
 
+	public Map<Date,Double> getHistoricPriceEth() throws IOException, JSONException{
+		
+			Utilities utilities = new Utilities();
+		
+		String ethQry = "https://min-api.cryptocompare.com/data/histoday?fsym=ETH&tsym=USD&limit=600000000000000000000000000000000000000000000000000&aggregate=3&e=CCCAGG";
+		
+		//gets eth trend from internet
+		Map<Date,Double> ethPrices = utilities.getEthPrices(ethQry);
 
+		return ethPrices;
+
+	}
 
 }
